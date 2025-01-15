@@ -1,7 +1,6 @@
 {
   "name": "azakaw-frontend-sdk",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -14,5 +13,14 @@
   },
   "devDependencies": {
     "@types/react": "^19.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maaz-siddiqui-azakaw/azakaw-frontend-sdk-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maaz-siddiqui-azakaw/azakaw-frontend-sdk-test/issues"
+  },
+  "homepage": "https://github.com/maaz-siddiqui-azakaw/azakaw-frontend-sdk-test#readme",
+  "description": ""
 }
