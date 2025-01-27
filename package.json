@@ -1,6 +1,6 @@
 {
-  "name": "azakaw-frontend-sdk",
-  "version": "1.0.1",
+  "name": "@maaz-siddiqui-azakaw/azakaw-frontend-sdk-test",
+  "version": "1.0.0",
   "main": "./dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
