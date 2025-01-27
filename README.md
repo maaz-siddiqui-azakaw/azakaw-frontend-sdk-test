@@ -45,6 +45,55 @@ In the HTML file you can then use the customer onboarding element, for example:
 
 ### React
 
+```
+
+import { useEffect, useRef } from 'react';
+import './App.css';
+import '@maaz-siddiqui-azakaw/azakaw-frontend-sdk-test';
+import { CustomerOnboardingComponent } from '@maaz-siddiqui-azakaw/azakaw-frontend-sdk-test';
+
+function App() {
+  const ref = useRef<CustomerOnboardingComponent>(null);
+
+  useEffect(() => {
+    if (!ref?.current) return;
+
+    const azakawElemRef = ref?.current;
+
+    const onOnboardingComplete = () => {
+      console.log('Completed onboarding.');
+    };
+
+    azakawElemRef?.addEventListener(
+      'onboardingCompleted',
+      onOnboardingComplete
+    );
+
+    return () => {
+      azakawElemRef?.removeEventListener(
+        'onboardingCompleted',
+        onOnboardingComplete
+      );
+    };
+  }, []);
+
+  return (
+    <>
+      <div className='wrapper'>
+        <az-customer-onboarding
+          ref={ref}
+          session-id='7c035899-083c-4d4e-8d2d-5de92ceaa73d'
+          host-origin='http://localhost:5173'
+        ></az-customer-onboarding>
+      </div>
+    </>
+  );
+}
+
+export default App;
+
+```
+
 ### Angular
 
 ## API
