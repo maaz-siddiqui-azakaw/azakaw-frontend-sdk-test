@@ -13,7 +13,39 @@ The Azakaw frontend SDK allows you to add customer onboarding in your web applic
 
 `npm install azakaw-frontend-sdk`
 
+### Important Note
+
+The web components are registered on the web page itself, so it is necessary that the library is imported on your website before using it in your code.
+
 ## Usage
+
+Import @maaz-siddiqui-azakaw/azakaw-frontend-sdk-test in your main javascript file.
+
+`import './node_modules/@maaz-siddiqui-azakaw/azakaw-frontend-sdk-test/dist/main.js';`
+
+In the HTML file you can then use the customer onboarding element, for example:
+
+```
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="index.js" type="module"></script>
+  </head>
+  <body>
+    <az-customer-onboarding
+      session-id="d43151a9-a031-4067-a4c7-21baee51cfa3"
+      host-origin="http://localhost:4200"
+    ></az-customer-onboarding>
+  </body>
+</html>
+
+```
+
+### React
+
+### Angular
 
 ## API
 
