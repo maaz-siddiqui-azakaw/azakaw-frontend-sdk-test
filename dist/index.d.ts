@@ -1,14 +1,6 @@
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
-
 declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'az-customer-onboarding': CustomerOnboardingAttributes;
-    }
-  }
-
   interface HTMLElementTagNameMap {
-    'az-customer-onboarding': CustomerOnboardingComponent;
+    'az-customer-onboarding': CustomerOnboardingWebComponent;
   }
 
   interface HTMLElementEventMap {
@@ -16,14 +8,7 @@ declare global {
   }
 }
 
-interface CustomerOnboardingAttributes
-  extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
-  'session-id': string;
-  'host-origin': string;
-  onboardingCompleted?: (event: CustomEvent) => void;
-}
-
-export declare class CustomerOnboardingComponent extends HTMLElement {
+export declare class CustomerOnboardingWebComponent extends HTMLElement {
   'session-id': string;
   'host-origin': string;
   attributeChangedCallback(

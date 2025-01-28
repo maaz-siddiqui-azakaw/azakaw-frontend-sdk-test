@@ -45,8 +45,28 @@ In the HTML file you can then use the customer onboarding element, for example:
 
 ### React
 
+#### Add the type declaration for JSX in the global.d.ts file
+
+```
+import { CustomerOnboardingWebComponent } from '@maaz-siddiqui-azakaw/azakaw-frontend-sdk-test';
+import { DetailedHTMLProps, HTMLAttributes } from 'react';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      'az-customer-onboarding': DetailedHTMLProps<
+        HTMLAttributes<CustomerOnboardingWebComponent>,
+        CustomerOnboardingWebComponent
+      >;
+    }
+  }
+}
+
 ```
 
+#### Import the package and use the custom element inside your react component.
+
+```
 import { useEffect, useRef } from 'react';
 import './App.css';
 import '@maaz-siddiqui-azakaw/azakaw-frontend-sdk-test';
@@ -95,6 +115,76 @@ export default App;
 ```
 
 ### Angular
+
+#### Add CUSTOM_ELEMENTS_SCHEMA in the schemas property of AppModule
+
+```
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+@NgModule({
+  declarations: [AppComponent],
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+})
+export class AppModule {}
+
+```
+
+#### Import the package and attach any event listeners to the customer onboarding web component
+
+```
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import '@maaz-siddiqui-azakaw/azakaw-frontend-sdk-test';
+import { CustomerOnboardingWebComponent } from '@maaz-siddiqui-azakaw/azakaw-frontend-sdk-test';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent implements OnDestroy {
+  @ViewChild('customerOnboardingElem')
+  customerOnboardingElem!: ElementRef<CustomerOnboardingWebComponent>;
+
+  ngAfterViewInit(): void {
+    this.customerOnboardingElem?.nativeElement?.addEventListener(
+      'onboardingCompleted',
+      this.onOnboardingCompleted
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.customerOnboardingElem?.nativeElement?.removeEventListener(
+      'onboardingCompleted',
+      this.onOnboardingCompleted
+    );
+  }
+
+  private onOnboardingCompleted = () => {
+    console.log('Completed onboarding');
+  };
+}
+
+```
+
+#### Use the custom element in your template file
+
+```
+
+<div class="wrapper">
+  <az-customer-onboarding
+    session-id="7c035899-083c-4d4e-8d2d-5de92ceaa73d"
+    host-origin="http://localhost:4201"
+  ></az-customer-onboarding>
+</div>
+
+```
 
 ## API
 
